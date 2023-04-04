@@ -1,12 +1,10 @@
 import 'dart:convert';
 
-import 'package:blocpattern/bloc/counter_bloc.dart';
-import 'package:blocpattern/bloc/counter_event.dart';
-import 'package:blocpattern/bloc/counter_state.dart';
 import 'package:blocpattern/routes/route_generator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'bloc/counter/counter_bloc.dart';
 import 'routes/routes.dart';
 
 void main() {

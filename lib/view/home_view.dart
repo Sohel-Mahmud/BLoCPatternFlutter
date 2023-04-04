@@ -9,12 +9,13 @@
  * -----
  * Copyright 2021 - 2023 StaffAsia, StaffAsia
  */
+import 'package:blocpattern/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/counter_bloc.dart';
-import '../bloc/counter_event.dart';
-import '../bloc/counter_state.dart';
+import '../bloc/counter/counter_bloc.dart';
+import '../bloc/counter/counter_event.dart';
+import '../bloc/counter/counter_state.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -55,8 +56,14 @@ class MyHomePage extends StatelessWidget {
                       context.read<CounterBloc>().add(TitleToggle());
                     },
                     child: Text("Toggle Title")),
-                const Spacer(),
-
+                const SizedBox(
+                  height: 100,
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.apitestview);
+                    },
+                    child: Text("Get user list")),
               ],
             ),
           );
