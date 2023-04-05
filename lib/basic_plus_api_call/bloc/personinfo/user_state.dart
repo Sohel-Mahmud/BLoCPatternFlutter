@@ -9,8 +9,9 @@
  * -----
  * Copyright 2021 - 2023 StaffAsia, StaffAsia
  */
-import 'package:blocpattern/model/user_model.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../model/user_model.dart';
 
 abstract class UserState extends Equatable {}
 

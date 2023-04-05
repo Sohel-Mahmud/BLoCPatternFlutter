@@ -12,8 +12,8 @@
 import 'package:blocpattern/routes/routes.dart';
 import 'package:flutter/material.dart';
 
-import '../view/home_view.dart';
-import '../view/person_list_view.dart';
+import '../basic_plus_api_call/view/home_view.dart';
+import '../basic_plus_api_call/view/person_list_view.dart';
 
 class RouterCustom {
   static Route<dynamic> generateRoute(RouteSettings settings) {

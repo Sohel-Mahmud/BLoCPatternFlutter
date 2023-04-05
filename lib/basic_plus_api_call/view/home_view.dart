@@ -36,6 +36,7 @@ class MyHomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     FloatingActionButton(
+                      heroTag: "btn1",
                       onPressed: () {
                         context.read<CounterBloc>().add(CounterIncrease());
                       },
@@ -43,6 +44,7 @@ class MyHomePage extends StatelessWidget {
                       child: const Icon(Icons.add),
                     ),
                     FloatingActionButton(
+                      heroTag: "btn2",
                       onPressed: () {
                         context.read<CounterBloc>().add(CounterDecrease());
                       },
