@@ -62,10 +62,16 @@ class MyHomePage extends StatelessWidget {
                   height: 100,
                 ),
                 ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, Routes.apitestview);
+                  },
+                  child: Text("Get user list"),
+                ),
+                ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.apitestview);
+                      Navigator.pushNamed(context, Routes.timerView);
                     },
-                    child: Text("Get user list")),
+                    child: const Text("Timer")),
               ],
             ),
           );

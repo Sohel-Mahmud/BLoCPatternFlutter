@@ -26,11 +26,45 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   TimerBloc({required Ticker ticker})
       : _ticker = ticker,
         super(const TimerInitial(_duration)) {
+          
+    on<TimerStarted>((event, emit) {
+      emit(TimerRunInProgress(event.duration));
+      _tickerSubscription?.cancel();
+      _tickerSubscription =
+          _ticker.tick(ticks: event.duration).listen((duration) {
+        add(TimerTicked(duration: duration));
+      });
+    });
 
-    on<TimerStarted>(
-      (event, emit) {
+    on<TimerTicked>((event, emit) {
+      emit(event.duration > 0
+          ? TimerRunInProgress(event.duration)
+          : const TimerRunComplete());
+    });
 
+    on<TimerPaused>((event, emit) {
+      if (state is TimerRunInProgress) {
+        _tickerSubscription?.pause();
+        emit(TimerRunPause(state.duration));
       }
-    );
+    });
+
+    on<TimerResumed>((event, emit) {
+      if (state is TimerRunPause) {
+        _tickerSubscription?.resume();
+        emit(TimerRunInProgress(state.duration));
+      }
+    });
+
+    on<TimerReset>((event, emit) {
+      _tickerSubscription?.cancel();
+      emit(const TimerInitial(_duration));
+    });
+  }
+
+  @override
+  Future<void> close() {
+    _tickerSubscription?.cancel();
+    return super.close();
   }
 }

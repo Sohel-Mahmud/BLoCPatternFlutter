@@ -10,6 +10,7 @@
  * Copyright 2021 - 2023 StaffAsia, StaffAsia
  */
 import 'package:blocpattern/routes/routes.dart';
+import 'package:blocpattern/timer/page/timer_page.dart';
 import 'package:flutter/material.dart';
 
 import '../basic_plus_api_call/view/home_view.dart';
@@ -28,6 +29,10 @@ class RouterCustom {
         return MaterialPageRoute(
             builder: (_) => const PersonListView(),
             settings: const RouteSettings(name: Routes.apitestview));
+      case Routes.timerView:
+        return MaterialPageRoute(
+            builder: (_) => const TimerPage(),
+            settings: const RouteSettings(name: Routes.timerView));
       
       default:
         return MaterialPageRoute(
